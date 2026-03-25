@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { prisma } from '@/lib/prisma'
 import Link from 'next/link';
 import { IoIosHome } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
@@ -9,9 +8,16 @@ import DeleteButton from '../../../components/DeleteButton';
 
 const SnippetView = async ({params}) => {
     const id = Number((await params).id);
-    const snippet = await prisma.snippet.findUnique({
-        where:{id},
-    })
+   let snippet = null;
+
+  try {
+    const { prisma } = await import('@/lib/prisma'); 
+    snippet = await prisma.snippet.findUnique({
+      where: { id },
+    });
+  } catch (err) {
+    console.log("DB Error:", err);
+  }
   return (
     <div className='flex flex-col gap-10 relative'>
       <div className='flex justify-between'>
