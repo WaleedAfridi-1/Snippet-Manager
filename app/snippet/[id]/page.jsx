@@ -6,6 +6,7 @@ import { IoIosHome } from "react-icons/io";
 import { IoHome } from "react-icons/io5";
 import DeleteButton from '../../../components/DeleteButton';
 
+export const dynamic = "force-dynamic";
 
 const SnippetView = async ({params}) => {
     const id = Number((await params).id);
