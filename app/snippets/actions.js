@@ -40,7 +40,6 @@ export const UpdateHandle = async (form) => {
       code,
     }
   })
-  revalidatePath(`/snippet/${id}`)
   redirect(`/snippet/${id}`)
 }
 
