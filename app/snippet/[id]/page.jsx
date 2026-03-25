@@ -44,11 +44,3 @@ const SnippetView = async ({params}) => {
 }
 
 export default SnippetView
-
-export const  generateStaticParams = async () => {
-
-  const snippets = await prisma.snippet.findMany();
-  return snippets.map((snip) => {
-    return {id : snip.id.toString()}
-  })
-}
