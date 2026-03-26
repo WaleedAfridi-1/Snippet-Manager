@@ -4,8 +4,8 @@ import CodeEditor from '@/components/CodeEditor'
 
 const UpdateSnippet = ({snippet}) => {
 
-    const [title, setTitle] = useState(snippet.title)
-    const [code, setCode] = useState(snippet.code)
+    const [title, setTitle] = useState(snippet?.title ||"")
+    const [code, setCode] = useState(snippet?.code || "")
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-3">

@@ -2,16 +2,21 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import UpdateSnippet from '../../../../components/UpdateSnippet'
-import { prisma } from '@/lib/prisma'
 import { UpdateHandle } from '../../../snippets/actions'
 import { SnippetUpdateToast } from '../../../../components/ToasterHandle'
 
 
 const SnippetEdit = async ({params}) => {
-    const id = Number((await params).id)
-    const snippet = await prisma.snippet.findUnique({
-        where:{id}
-    })
+    const { id } =await params;
+  const ids = Number(id)
+  console.log(typeof id)
+  const baseUrl =
+  process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const res = await fetch(
+  `${baseUrl}/api/snippet/${id}`,
+  { cache: "no-store" }
+);
+  const snippet = await res.json()
 
   return (
     <div>

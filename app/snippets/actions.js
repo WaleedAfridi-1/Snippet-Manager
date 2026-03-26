@@ -25,13 +25,14 @@ export const AddSnippet = async (formData) => {
 export const UpdateHandle = async (form) => {
   'use server'
   const idcol = form.get('id');
-  const id = Number(idcol)
+  const id = parseInt(idcol)
   const getTitle = form.get('title');
   const getCode = form.get('code');
 
   const title = String(getTitle)
   const code = String(getCode)
   if(!title.trim() || !code.trim()) return;
+  console.log("ID:", id, typeof id);
   
   await prisma.snippet.update({
     where:{id},
@@ -40,7 +41,7 @@ export const UpdateHandle = async (form) => {
       code,
     }
   })
-  revalidatePath(`/snippet/${id}`)
+  // revalidatePath(`/snippet/${id}`)
   redirect(`/snippet/${id}`)
 }
 
