@@ -11,14 +11,9 @@ const SnippetView = async ({ params }) => {
   const { id } =await params;
   const ids = parseInt(id)
   console.log(typeof ids)
-  const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "https://snippet-manager-kfuwrgr3i-waleedafridi-1s-projects.vercel.app";
-  const res = await fetch(
-  `${baseUrl}/api/snippet/${ids}`,
-  { cache: "no-store" }
-);
-  
-  const snippet = await res.json()  
+   const snippet = await prisma.snippet.findUnique({
+    where: { id },
+  });
   console.log(snippet)
   if (!snippet ) {
   return <div>Snippet not found</div>;
