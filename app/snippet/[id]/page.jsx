@@ -12,7 +12,7 @@ const SnippetView = async ({ params }) => {
   const ids = parseInt(id)
   console.log(typeof ids)
   const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_URL || "https://snippet-manager-kfuwrgr3i-waleedafridi-1s-projects.vercel.app";
   const res = await fetch(
   `${baseUrl}/api/snippet/${ids}`,
   { cache: "no-store" }
