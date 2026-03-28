@@ -9,7 +9,6 @@ export const dynamic = "force-dynamic";
 
 const SnippetView = async ({ params }) => {
   const id = Number((await params).id);
-  console.log(typeof id)
   const snippet = await prisma.snippet.findUnique({
     where: { id },
   });
