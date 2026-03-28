@@ -8,10 +8,9 @@ import DeleteButton from "../../../components/DeleteButton";
 export const dynamic = "force-dynamic";
 
 const SnippetView = async ({ params }) => {
-  const { id } =await params;
-  const ids = parseInt(id)
-  console.log(typeof ids)
-   const snippet = await prisma.snippet.findUnique({
+  const id = Number((await params).id);
+  console.log(typeof id)
+  const snippet = await prisma.snippet.findUnique({
     where: { id },
   });
   console.log(snippet)
