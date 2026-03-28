@@ -32,7 +32,6 @@ export const UpdateHandle = async (form) => {
   const title = String(getTitle)
   const code = String(getCode)
   if(!title.trim() || !code.trim()) return;
-  console.log("ID:", id, typeof id);
   
   await prisma.snippet.update({
     where:{id},
@@ -42,7 +41,7 @@ export const UpdateHandle = async (form) => {
     }
   })
 
-  // revalidatePath(`/snippet/${id}`)
+  revalidatePath(`/snippet/${id}`)
 
   redirect(`/snippet/${id}`)
 }

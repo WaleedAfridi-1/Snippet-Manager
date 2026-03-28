@@ -9,11 +9,11 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 model snippet {
-  id  Int @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
   title String?
-  code String
+  code  String
 }

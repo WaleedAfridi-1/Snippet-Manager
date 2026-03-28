@@ -8,12 +8,11 @@ export const GET = async (req, { params }) => {
             where: { id },
         });
 
-        console.log("PARAM ID:", id);
 
         const all = await prisma.snippet.findMany();
-        console.log("ALL SNIPPETS:", all);
 
         return Response.json(snippet || null);
+        
     } catch (error) {
         console.log("API ERROR:", error);
 
