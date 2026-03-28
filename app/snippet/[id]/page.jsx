@@ -15,7 +15,7 @@ const SnippetView = async ({ params }) => {
     where: { id },
   });
   console.log(snippet)
-  if (!snippet ) {
+  if (!snippet) {
   return <div>Snippet not found</div>;
 }
   return (
