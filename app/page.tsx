@@ -3,7 +3,6 @@ import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
 import React from 'react'
 
-export const dynamic = 'force-dynamic'
 
 async function HomePage() {
   const snippet = await prisma.snippet.findMany()
