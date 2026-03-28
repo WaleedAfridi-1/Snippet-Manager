@@ -7,16 +7,12 @@ import { SnippetUpdateToast } from '../../../../components/ToasterHandle'
 
 
 const SnippetEdit = async ({params}) => {
-    const { id } =await params;
-  const ids = Number(id)
+    const id = Number((await params).id);
   console.log(typeof id)
-  const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-  const res = await fetch(
-  `${baseUrl}/api/snippet/${id}`,
-  { cache: "no-store" }
-);
-  const snippet = await res.json()
+  const snippet = await prisma.snippet.findUnique({
+    where: { id },
+  });
+
 
   return (
     <div>
