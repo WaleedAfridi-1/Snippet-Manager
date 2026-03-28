@@ -13,7 +13,6 @@ const SnippetView = async ({ params }) => {
   const snippet = await prisma.snippet.findUnique({
     where: { id },
   });
-  console.log(snippet)
   if (!snippet) {
   return <div>Snippet not found</div>;
 }
