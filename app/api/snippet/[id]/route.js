@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 
-export const GET = async (req, { params }) => {
+export const GET = async ({ params }) => {
     try {
         const id = Number((await params).id);
 
